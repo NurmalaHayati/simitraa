@@ -55,12 +55,16 @@ if ($result1['Id_jabatan'] == "1") :
                     <ul id="sidebarnav">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.php" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Profile</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.php" aria-expanded="false"><i class="fa-solid fa-circle-user"></i><span class="hide-menu">Profile</span></a></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="lowongan-user.php" aria-expanded="false"><i class="mdi mdi-worker"></i><span class="hide-menu">Lowongan Terdaftar</span></a></li>
+                        <?php if ($result1['Id_jabatan'] == 2) :  ?>
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="lowongan-user.php" aria-expanded="false"><i class="mdi mdi-worker"></i><span class="hide-menu">Lowongan Terdaftar</span></a></li>
+                        <?php endif; ?>
 
                         <?php if ($result1['Id_jabatan'] == 1) {  ?>
                             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="lowongan.php" aria-expanded="false"><i class="mdi mdi-file-document-box"></i><span class="hide-menu">Daftar Lowongan</span></a></li>
+
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="seleksi-daftar.php" aria-expanded="false"><i class="mdi mdi-file-document-box "></i><span class="hide-menu ">Seleksi Pendaftar</span></a></li>
 
                             <li class="sidebar-item" style="background-color: #1a9bfc; border-radius: 9px"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="user.php" aria-expanded="false"><i class="mdi mdi-account-multiple text-white"></i><span class="hide-menu text-white">Account</span></a></li>
                         <?php } ?>
@@ -637,7 +641,8 @@ if ($result1['Id_jabatan'] == "1") :
                                         <select class="form-select" name="jabatan" aria-label="Default select example">
                                             <?php foreach ($q as $row) : ?>
                                                 <?php if ($row['Id_jabatan'] == "2") : ?>
-                                                    <option value="<?= $row['Id_jabatan']; ?>" selected><?= $row['Jabatan']; ?></option>
+                                                    <option value="<?= $row['Id_jabatan']; ?>" selected><?= $row['Jabatan']; ?>
+                                                    </option>
                                                 <?php else : ?>
                                                     <option value="<?= $row['Id_jabatan']; ?>"><?= $row['Jabatan']; ?></option>
                                                 <?php endif; ?>
